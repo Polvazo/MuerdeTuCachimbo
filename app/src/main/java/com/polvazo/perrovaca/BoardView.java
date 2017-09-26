@@ -22,9 +22,7 @@ import android.widget.Toast;
 
 import java.security.cert.CertPathValidatorException;
 
-/**
- * TODO: document your custom view class.
- */
+
 public class BoardView extends SurfaceView implements Runnable {
 
     private int N = 10;
