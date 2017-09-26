@@ -7,7 +7,6 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private BoardView boardView;
-    private TextView mov;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

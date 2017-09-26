@@ -2,25 +2,17 @@ package com.polvazo.perrovaca;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.os.SystemClock;
-import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import java.security.cert.CertPathValidatorException;
 
 
 public class BoardView extends SurfaceView implements Runnable {
@@ -43,7 +35,7 @@ public class BoardView extends SurfaceView implements Runnable {
 
     //pinceles
     private Paint blackPaint;
-    private Paint greenPaint;
+    private Paint redPaint;
     private int countPlay = 1;
 
     public BoardView(Context context) {
@@ -70,10 +62,10 @@ public class BoardView extends SurfaceView implements Runnable {
         blackPaint = new Paint();
         blackPaint.setStyle(Paint.Style.FILL_AND_STROKE);
 
-        greenPaint = new Paint();
-        greenPaint.setStyle(Paint.Style.STROKE);
-        greenPaint.setStrokeWidth(3.0f);
-        greenPaint.setColor(Color.RED);
+        redPaint = new Paint();
+        redPaint.setStyle(Paint.Style.STROKE);
+        redPaint.setStrokeWidth(3.0f);
+        redPaint.setColor(Color.RED);
 
     }
 
@@ -106,8 +98,9 @@ public class BoardView extends SurfaceView implements Runnable {
 
             canvas.drawColor(Color.WHITE);
             drawGrid();
-            drawPieces();
             drawSelectionPerroVaca();
+            drawPieces();
+
 
             surfaceHolder.unlockCanvasAndPost(canvas);
             try {
@@ -129,7 +122,7 @@ public class BoardView extends SurfaceView implements Runnable {
             for (int l = -1; l < 2; l++) {
                 x = (j + k) * cellSize;
                 y = (i + l) * cellSize;
-                canvas.drawRect(x, y, x + cellSize, y + cellSize, greenPaint);
+                canvas.drawRect(x, y, x + cellSize, y + cellSize, redPaint);
             }
 
         }
@@ -173,7 +166,7 @@ public class BoardView extends SurfaceView implements Runnable {
         } else {
             if (boardControl.isWinner(i, j) == true) {
                 boardControl.movePiece(i, j);
-                Toast.makeText(getContext(), "ganaste tio en "+countPlay+" jugadas", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "ganaste tio en " + countPlay + " jugadas", Toast.LENGTH_SHORT).show();
 
             } else {
                 long actual = System.currentTimeMillis();
