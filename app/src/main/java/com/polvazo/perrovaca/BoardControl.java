@@ -59,6 +59,8 @@ public class BoardControl {
 
     }
 
+
+    //En esta parta estoy validando las jugadas permitidas del perro vaca
     public boolean isMovedValido(int i, int j) {
         if (board[i][j] == WALL) {
             return false;

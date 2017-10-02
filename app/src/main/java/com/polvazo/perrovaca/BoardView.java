@@ -100,9 +100,8 @@ public class BoardView extends SurfaceView implements Runnable {
             drawGrid();
             drawSelectionPerroVaca();
             drawPieces();
-
-
             surfaceHolder.unlockCanvasAndPost(canvas);
+
             try {
                 Thread.sleep(25);
             } catch (InterruptedException ignores) {
