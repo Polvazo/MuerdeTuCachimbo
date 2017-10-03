@@ -1,6 +1,8 @@
 package com.polvazo.perrovaca;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -169,6 +171,7 @@ public class BoardView extends SurfaceView implements Runnable {
             para varios jugadores
         }*/
 
+
         if (boardControl.isMovedValido(i, j)) {
             boardControl.movePiece(i, j);
             drawPieceAt(BoardControl.NONE, i, j);
@@ -189,6 +192,10 @@ public class BoardView extends SurfaceView implements Runnable {
                 }
             }
 
+        }
+        if(countPlay>ruta.NumeroJugadas()){
+            Toast.makeText(getContext(), "Perdiste", Toast.LENGTH_SHORT).show();
+            mensajePerdiste();
         }
 
 
@@ -273,6 +280,19 @@ public class BoardView extends SurfaceView implements Runnable {
         Log.i("numero de jugadas", String.valueOf(ruta.NumeroJugadas()));
         String nume = String.valueOf(ruta.NumeroJugadas());
         Toast.makeText(getContext(), "Numero posibles de jugadas igual a: " + nume, Toast.LENGTH_LONG).show();
+    }
+    public void mensajePerdiste(){
+
+        AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
+        alertDialog.setTitle("Perdiste");
+        alertDialog.setMessage("No se como volver a empezar, asi que lo cerrare");
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Mockz",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        System.exit(0);
+                    }
+                });
+        alertDialog.show();
     }
 
 }
