@@ -4,7 +4,7 @@ public class mapaMatriz {
 
     int[][] matriz;
     int cordX, cordY;
-    int tamanio;
+    int tamanio=10;
     nodo puntoInicio, puntoMeta;
     lista abierta;
     lista cerrados;

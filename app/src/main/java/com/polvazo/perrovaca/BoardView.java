@@ -38,6 +38,10 @@ public class BoardView extends SurfaceView implements Runnable {
     private Paint redPaint;
     private int countPlay = 1;
 
+    //mapa
+    mapaMatriz mapita;
+    lista ruta;
+
     public BoardView(Context context) {
         super(context);
         init(null, 0);
@@ -56,6 +60,8 @@ public class BoardView extends SurfaceView implements Runnable {
     private void init(AttributeSet attrs, int defStyle) {
         surfaceHolder = getHolder();
         boardControl = new BoardControl();
+        mapita = new mapaMatriz(N);
+
     }
 
     private void prepareBrushes() {
@@ -72,6 +78,7 @@ public class BoardView extends SurfaceView implements Runnable {
     public void resume() {
         canDraw = true;
         thread = new Thread(this);
+
         thread.start();
     }
 
@@ -90,6 +97,7 @@ public class BoardView extends SurfaceView implements Runnable {
     @Override
     public void run() {
         prepareBrushes();
+        PerroVaca();
         while (canDraw) {
             if (!surfaceHolder.getSurface().isValid()) {
                 continue;
@@ -129,6 +137,7 @@ public class BoardView extends SurfaceView implements Runnable {
     }
 
     private void drawPieces() {
+
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 int piece = boardControl.getItemAt(i, j);
@@ -242,6 +251,21 @@ public class BoardView extends SurfaceView implements Runnable {
                 ch.recycle();
             }
         }
+    }
+    public void PerroVaca(){
+
+        mapita.setParedes(3, 3);
+        mapita.setParedes(4, 3);
+        mapita.setParedes(5, 3);
+        mapita.setParedes(6, 3);
+        mapita.setParedes(5, 4);
+        mapita.setParedes(5, 5);
+        mapita.setParedes(4, 5);
+        mapita.setReferencias(4,0);
+        mapita.setReferencias(5,9);
+        mapita.imprimeMatriz();
+        ruta = mapita.getCamino();
+        ruta.muestralista();
     }
 
 }
