@@ -7,8 +7,11 @@ import android.util.Log;
  */
 
 public class Jashir {
-    public void Jashir() {
 
-        Log.i("Soy jashur", "pa que mas");
-    }
+    public static int posicionPERROVACAx=5;
+    public static int posicionPERROVACAy=8;
+
+    public static int posicionCACHIMBOx=4;
+    public static int positicionCACHIMBOy=0;
+
 }

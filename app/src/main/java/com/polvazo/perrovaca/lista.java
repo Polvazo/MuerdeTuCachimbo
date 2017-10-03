@@ -4,6 +4,7 @@ public class lista {
 
     nodo primero, ultimo, aux;
     String nombreLista;
+    public static int numeroJugadas;
 
     ///////CONSTRUCTOR//////////////////////////////////////////////////////////
     public lista(String nombreLista) {
@@ -69,10 +70,12 @@ public class lista {
     ///////METODO QUE MUESTRA LA LISTA//////////////////////////////////////////
     public void muestralista() {
         System.out.println("mostrando lista " + nombreLista);
+        numeroJugadas=0;
         nodo aux2 = primero;
         while (aux2 != null) {
             System.out.println("--> " + aux2.cordX + " " + aux2.cordY + " G:" + aux2.costoG + " H" + aux2.costoH + " F" + aux2.costoF);
             aux2 = aux2.siguiente;
+            numeroJugadas = numeroJugadas + 1;
         }
         System.out.println(" \n");
     }
@@ -80,5 +83,9 @@ public class lista {
     //////METODO PARA DETERMINAR SI LA LISTA ESTA VACIA/////////////////////////
     public boolean esVacia() {
         return primero == null;
+    }
+
+    public int NumeroJugadas(){
+        return numeroJugadas;
     }
 }

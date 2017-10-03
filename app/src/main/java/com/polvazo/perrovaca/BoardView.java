@@ -62,6 +62,7 @@ public class BoardView extends SurfaceView implements Runnable {
         boardControl = new BoardControl();
         mapita = new mapaMatriz(N);
 
+
     }
 
     private void prepareBrushes() {
@@ -78,7 +79,7 @@ public class BoardView extends SurfaceView implements Runnable {
     public void resume() {
         canDraw = true;
         thread = new Thread(this);
-
+        PerroVaca();
         thread.start();
     }
 
@@ -97,7 +98,7 @@ public class BoardView extends SurfaceView implements Runnable {
     @Override
     public void run() {
         prepareBrushes();
-        PerroVaca();
+
         while (canDraw) {
             if (!surfaceHolder.getSurface().isValid()) {
                 continue;
@@ -108,6 +109,7 @@ public class BoardView extends SurfaceView implements Runnable {
             drawGrid();
             drawSelectionPerroVaca();
             drawPieces();
+
             surfaceHolder.unlockCanvasAndPost(canvas);
 
             try {
@@ -166,6 +168,7 @@ public class BoardView extends SurfaceView implements Runnable {
         if(pieceSelect== BoardControl.PERROVACA){
             para varios jugadores
         }*/
+
         if (boardControl.isMovedValido(i, j)) {
             boardControl.movePiece(i, j);
             drawPieceAt(BoardControl.NONE, i, j);
@@ -252,7 +255,8 @@ public class BoardView extends SurfaceView implements Runnable {
             }
         }
     }
-    public void PerroVaca(){
+
+    public void PerroVaca() {
 
         mapita.setParedes(3, 3);
         mapita.setParedes(4, 3);
@@ -261,11 +265,14 @@ public class BoardView extends SurfaceView implements Runnable {
         mapita.setParedes(5, 4);
         mapita.setParedes(5, 5);
         mapita.setParedes(4, 5);
-        mapita.setReferencias(4,0);
-        mapita.setReferencias(5,9);
+        mapita.setReferencias(Jashir.posicionCACHIMBOx, Jashir.positicionCACHIMBOy);
+        mapita.setReferencias(Jashir.posicionPERROVACAx, Jashir.posicionPERROVACAy);
         mapita.imprimeMatriz();
         ruta = mapita.getCamino();
         ruta.muestralista();
+        Log.i("numero de jugadas", String.valueOf(ruta.NumeroJugadas()));
+        String nume = String.valueOf(ruta.NumeroJugadas());
+        Toast.makeText(getContext(), "Numero posibles de jugadas igual a: " + nume, Toast.LENGTH_LONG).show();
     }
 
 }

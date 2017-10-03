@@ -11,18 +11,10 @@ public class BoardControl {
     public static final int PERROVACA = 1;
     public static final int CACHIMBO = 2;
     public static final int WALL = 3;
-    private int PERROVACA_ACTUAL_I = 4;
-    private int PERROVACA_ACTUAL_j = 0;
-    private int CACHIMBO_POSITION_I = 5;
-    private int CACHIMBO_POSITION_J = 9;
+    private int PERROVACA_ACTUAL_I = Jashir.posicionPERROVACAx;
+    private int PERROVACA_ACTUAL_j = Jashir.posicionPERROVACAy;
 
-    public int getCACHIMBO_POSITION_I() {
-        return CACHIMBO_POSITION_I;
-    }
 
-    public int getCACHIMBO_POSITION_J() {
-        return CACHIMBO_POSITION_J;
-    }
 
     public int getPERROVACA_ACTUAL_I() {
         return PERROVACA_ACTUAL_I;
@@ -34,7 +26,7 @@ public class BoardControl {
 
     public BoardControl() {
         board = new int[N][N];
-        board[PERROVACA_ACTUAL_I][PERROVACA_ACTUAL_j] = PERROVACA;
+        board[Jashir.posicionPERROVACAx][Jashir.posicionPERROVACAy] = PERROVACA;
         board[3][3] = WALL;
         board[4][3] = WALL;
         board[5][3] = WALL;
@@ -42,7 +34,7 @@ public class BoardControl {
         board[5][4] = WALL;
         board[5][5] = WALL;
         board[4][5] = WALL;
-        board[CACHIMBO_POSITION_I][CACHIMBO_POSITION_J] = CACHIMBO;
+        board[Jashir.posicionCACHIMBOx][Jashir.positicionCACHIMBOy] = CACHIMBO;
 
     }
 
