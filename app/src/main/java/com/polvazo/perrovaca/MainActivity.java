@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //COMO SE ESTA TRABAJANDO EN HILOS, SOLO INSTANCIAMOS EL VIEW
         boardView = (BoardView) findViewById(R.id.board);
 
 

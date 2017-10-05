@@ -85,6 +85,7 @@ public class lista {
         return primero == null;
     }
 
+    //METODO QUE TE RETORNA EL NUMERO DE JUGADAS EN TOTAL PARA EL JUEGO/////////
     public int NumeroJugadas(){
         return numeroJugadas;
     }
