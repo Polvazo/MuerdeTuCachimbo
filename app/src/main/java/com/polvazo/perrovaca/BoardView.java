@@ -67,6 +67,7 @@ public class BoardView extends SurfaceView implements Runnable {
 
     }
 
+    ////SE PREPARA LOS COLORES DEL JUEGO
     private void prepareBrushes() {
         blackPaint = new Paint();
         blackPaint.setStyle(Paint.Style.FILL_AND_STROKE);
@@ -123,6 +124,9 @@ public class BoardView extends SurfaceView implements Runnable {
 
     }
 
+
+    ////METODO PARA PINTAR LAS LINEAS ROJAS DE PERRO VACA
+    //ESTE METODO PARA VER POR DONDE PUEDO IR PERRO VACA
     private void drawSelectionPerroVaca() {
 
         int i = boardControl.getPERROVACA_ACTUAL_I();
@@ -140,6 +144,8 @@ public class BoardView extends SurfaceView implements Runnable {
 
     }
 
+
+
     private void drawPieces() {
 
         for (int i = 0; i < N; i++) {
@@ -150,6 +156,7 @@ public class BoardView extends SurfaceView implements Runnable {
         }
     }
 
+    ///METODO PARA EL MOVIMIENTO DE PERROVACA
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -165,6 +172,8 @@ public class BoardView extends SurfaceView implements Runnable {
         return true;
     }
 
+
+    /////METODO PARA MOVER A PERROVACA, SI GANA SALE UN MENSAJE DE GANADOR Y SI PIERDE MENSAJE DE PERDIDA
     private void selectPiece(int i, int j) {
        /* int pieceSelect = boardControl.getItemAt(i,j);
         if(pieceSelect== BoardControl.PERROVACA){
@@ -201,6 +210,7 @@ public class BoardView extends SurfaceView implements Runnable {
 
     }
 
+    ///METODO DE SELECCION DE PIEZA
     private void drawPieceAt(int piece, int i, int j) {
         Bitmap pieceBmp = null;
         switch (piece) {
@@ -232,6 +242,8 @@ public class BoardView extends SurfaceView implements Runnable {
         }
     }
 
+
+    ///METODO PARA CARGAR LAS IMAGENES
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -263,6 +275,8 @@ public class BoardView extends SurfaceView implements Runnable {
         }
     }
 
+
+    ////METODO DEL AGLROTIMO A*
     public void PerroVaca() {
 
         mapita.setParedes(3, 3);
@@ -281,6 +295,9 @@ public class BoardView extends SurfaceView implements Runnable {
         String nume = String.valueOf(ruta.NumeroJugadas());
         Toast.makeText(getContext(), "Numero posibles de jugadas igual a: " + nume, Toast.LENGTH_LONG).show();
     }
+
+
+    ////MENSAJE DE PERDIDA
     public void mensajePerdiste(){
 
         AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();

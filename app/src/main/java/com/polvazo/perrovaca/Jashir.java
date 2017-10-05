@@ -8,6 +8,8 @@ import android.util.Log;
 
 public class Jashir {
 
+
+    //VARIABLES GOBLALES DE LA POSICION DEL CACHIMBO Y PERRO VACA
     public static int posicionPERROVACAx=5;
     public static int posicionPERROVACAy=8;
 

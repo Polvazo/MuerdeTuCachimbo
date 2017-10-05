@@ -7,6 +7,7 @@ public class BoardControl {
     private int board[][];
     private int N = 10;
 
+    //////////KEY DE CADA PIEZA DEL JUEGO
     public static final int NONE = 0;
     public static final int PERROVACA = 1;
     public static final int CACHIMBO = 2;
@@ -25,6 +26,8 @@ public class BoardControl {
     }
 
     public BoardControl() {
+
+        //////INICIALIZAMOS LA POSICION DE CADA PIEZA DEL JUEGO
         board = new int[N][N];
         board[Jashir.posicionPERROVACAx][Jashir.posicionPERROVACAy] = PERROVACA;
         board[3][3] = WALL;
@@ -42,6 +45,7 @@ public class BoardControl {
         return board[i][j];
     }
 
+    //////METODO PARA EL MOVIMIENTO DE PERRROVACA
     public void movePiece(int finalInicialX, int finalInicialY) {
 
         board[PERROVACA_ACTUAL_I][PERROVACA_ACTUAL_j] = NONE;
@@ -75,6 +79,7 @@ public class BoardControl {
         return false;
     }
 
+    /////METODO PARA SABER SI EL JUGADOR GANO
     public boolean isWinner(int i, int j) {
         if (board[i][j] == CACHIMBO) {
             return true;

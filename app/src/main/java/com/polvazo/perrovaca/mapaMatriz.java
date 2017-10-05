@@ -10,7 +10,7 @@ public class mapaMatriz {
     lista cerrados;
     lista camino;
 
-    ///////CONSTRUCTOR//////////////////////////////////////////////////////////
+    ///////CONSTRUCTOR DEL MAPA//////////////////////////////////////////////////////////
     public mapaMatriz(int tamanio) {
         abierta = new lista("abierta");
         cerrados = new lista("cerrada");
@@ -137,10 +137,9 @@ public class mapaMatriz {
                         //consideramos los casos para avance diagonal donde rosa
                         nodo extra3;
                         if ((adyacente.cordX != actual.cordX) && (adyacente.cordY != actual.cordY)) {
-                            ////QUITANDO EL CONTINUE Y DESCOMENTANDO LO DE ABAJO ACEPTAMOS CAMINOS DIAGONALES///////////////////////////
+                            ////EN ESTA PARTE SE ESTA VALIDANDO LOS MOVIMIENTO EN DIAGONAL//////////////////////////
                             ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                            continue;
-                            /*
+
                             if( !(adyacente.cordX-1 < 0) ){// -1 0
                                 extra3 = new nodo( adyacente.cordX-1, adyacente.cordY );
                                 if( ( matriz[adyacente.cordX-1][adyacente.cordY] == 1 ) && distancia( extra3, actual ) ==10 ){
@@ -167,7 +166,7 @@ public class mapaMatriz {
                                     continue;
                                 }
                             }
-                             */
+
                         }
 
                         //comprobamos que no este en la abierta ni en la cerrada
